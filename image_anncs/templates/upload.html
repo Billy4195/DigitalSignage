@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="row">
+<h1>上傳圖片公告</h1>
+<br>
+<form action="{% url "upload" %}" method="POST">
+    <label for="imageUpload" class="button">Upload File</label>
+    <input type="file" id="imageUpload" class="show-for-sr">
+    <input type="submit" class="button expanded">
+</form>
+</div>
+{% endblock %}
