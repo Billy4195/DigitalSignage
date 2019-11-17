@@ -9,8 +9,9 @@ def get_content(request):
     from django.http import HttpResponse
     import json
     images = Image.objects.all()
-    content = {
-        'urls': [im.image.url for im in images]
-    }
+    content = list()
+    for img in images:
+        content.append(dict(url=img.image.url,
+                            display_time=img.display_time))
     return HttpResponse(json.dumps(content))
 

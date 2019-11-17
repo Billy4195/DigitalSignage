@@ -6,6 +6,7 @@ class Image(models.Model):
     created_time = models.DateTimeField(u'建立時間', auto_now_add=True)
     updated_time = models.DateTimeField(u'更新時間', auto_now=True)
     image = models.ImageField(upload_to='image')
+    display_time = models.IntegerField(u'播放時間', default=5)
 
     class Meta:
         verbose_name = '圖片公告'

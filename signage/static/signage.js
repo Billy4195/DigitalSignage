@@ -32,10 +32,15 @@ function getContent() {
         url: "/get_content",
         success: function(obj) {
             obj = JSON.parse(obj);
-            for (let i=0; i < obj["urls"].length; i++) {
-                setTimeout(Display, i*5000, obj["urls"][i])
+            total_delay = 0;
+            delay = 0;
+            for (let i=0; i < obj.length; i++) {
+                display_msec = obj[i]["display_time"] * 1000
+                setTimeout(Display, delay, obj[i]["url"])
+                delay = display_msec;
+                total_delay += delay;
             }
-            setTimeout(getContent, obj["urls"].length*5000);
+            setTimeout(getContent, total_delay);
         },
         error: function(err) {
             console.log(err);

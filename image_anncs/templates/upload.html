@@ -7,6 +7,8 @@
     {% csrf_token %}
     <label for="imageUpload" class="button">Upload File</label>
     <input type="file" id="imageUpload" class="show-for-sr" name="image">
+    <label>Display time</label>
+    {{ form.display_time }}
     <input type="submit" class="button expanded">
 </form>
 {% endblock %}
