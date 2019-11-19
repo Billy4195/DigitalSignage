@@ -4,10 +4,12 @@
 {% block body %}
 <link rel="stylesheet" type="text/css" href="{% static "signage.css" %}">
 <div class="grid-x">
-    <div class="cell large-10" style="height: 500px">
-        <img id="image" alt="Display Image">
+    <div class="cell large-10 container">
+        <div class="content">
+            <img id="image" alt="Display Image">
+        </div>
     </div>
-    <div class="cell large-2" id="sidebar">
+    <div class="cell large-2 container">
         <div id="clock">
             <p class="date"></p>
             <p class="time"></p>
