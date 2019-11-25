@@ -3,13 +3,11 @@
 
 {% block body %}
 <link rel="stylesheet" type="text/css" href="{% static "signage.css" %}">
-<div class="grid-x">
-    <div class="cell large-10 container">
-        <div class="content">
-            <img id="image" alt="Display Image">
-        </div>
+<div class="grid-x grid-padding-x">
+    <div class="cell large-10 content">
+        {% include 'content.html' %}
     </div>
-    <div class="cell large-2 container">
+    <div class="cell large-2 content">
         <div id="clock">
             <p class="date"></p>
             <p class="time"></p>

@@ -1,38 +1,50 @@
-html,body {
+body {
     height: 100vh;
     background: #0f3854;
 }
 
-.container {
-    height: 100vh;
-    text-align: center;
-    padding: 5px;
-}
-
 .content {
     height: 100%;
+}
+
+.cell, .grid-x, .grid-y {
+    height: 100%;
+}
+
+.news {
+    background: #8B8F8F;
+    border-radius: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.news, .qrcode {
     display: flex;
     align-items: center;
+    text-align: center;
+}
+
+.news span {
+    font-size: 2.5em;
+}
+
+.qrcode img {
+    width: auto;
+    height: 85%;
+    display:block;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #clock {
     background: #85A894;
     background-size: 100%;
     font-family: 'Share Tech Mono', monospace;
+	font-size: 2rem;
     color: #F5F1ED;
     padding: 70px 0;
-    .time {
-        letter-spacing: 0.05em;
-        font-size: 80px;
-        padding: 5px 0;
-    }
-    .date {
-        letter-spacing: 0.1em;
-        font-size: 24px;
-    }
-    .text {
-        letter-spacing: 0.1em;
-        font-size: 12px;
-        padding: 20px 0 0;
-    }
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
