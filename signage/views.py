@@ -30,5 +30,6 @@ def get_content(request):
                                                     type="news"))
         content.append(dict(content=html_string,
                             display_time=img.display_time))
+    random.shuffle(content)
     return HttpResponse(json.dumps(content))
 
