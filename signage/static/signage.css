@@ -37,6 +37,11 @@ body {
 	margin-right:auto;
 }
 
+#main-content {
+    display: flex;
+    align-items: center;
+}
+
 #clock {
     background: #85A894;
     background-size: 100%;

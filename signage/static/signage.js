@@ -23,8 +23,8 @@ function zeroPadding(num, digit) {
     return (zero + num).slice(-digit);
 }
 
-function Display(image) {
-    $("#image").attr("src", image);
+function Display(context) {
+    $("#main-content").html(context);
 }
 
 function getContent() {
@@ -36,9 +36,8 @@ function getContent() {
             delay = 0;
             for (let i=0; i < obj.length; i++) {
                 display_msec = obj[i]["display_time"] * 1000
-                setTimeout(Display, delay, obj[i]["url"])
-                delay = display_msec;
-                total_delay += delay;
+                setTimeout(Display, total_delay, obj[i]["content"])
+                total_delay += display_msec;
             }
             setTimeout(getContent, total_delay);
         },
