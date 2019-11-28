@@ -22,14 +22,13 @@ def get_content(request):
         content.append(dict(content=html_string,
                             display_time=img.display_time))
     news = News.objects.order_by("-created_time")[:30]
-    sample_size = 9
-    sampled_idxes = random.sample(range(len(news)), 9)
+    sample_size = 15
+    sampled_idxes = random.sample(range(len(news)), sample_size)
     for i in range(sample_size//3):
         html_string = render_to_string("content.html",
                 context=dict(news=[news[idx] for idx in sampled_idxes[i*3: (i+1)*3]],
                                                     type="news"))
-        content.append(dict(content=html_string,
-                            display_time=img.display_time))
+        content.append(dict(content=html_string, display_time=10))
     random.shuffle(content)
     return HttpResponse(json.dumps(content))
 
