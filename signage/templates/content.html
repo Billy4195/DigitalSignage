@@ -1,18 +1,6 @@
 {% if type == "image" %}
 <img id="image" src="{{ url }}" alt="Display Image">
 {% elif type == "news" %}
-<div class="grid-y">
-    {% for post in news %}
-    <div class="cell large-auto grid-x news">
-        <div class="cell large-9 grid-y grid-padding-y grid-margin-y" style="text-align: center;">
-            <img class="cell large-6" src="https://www.inside.com.tw/assets/wp-content/themes/inside/images/logo.svg">
-            <span class="cell large-6">{{ post.title }}</span>
-        </div>
-        <div class="cell large-3 qrcode">
-            <img src="{{ post.qr_img.url }}">
-        </div>
-    </div>
-    {% endfor %}
-</div>
+    {% include 'news_content.html' %}
 {% endif %}
 
