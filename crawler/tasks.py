@@ -57,3 +57,33 @@ def inside_crawler():
         buf = BytesIO()
         url.qr_img.save(buf, format="jpeg")
         news.qr_img.save(url.file_name, File(buf))
+
+def TechOrange_crawler():
+    """
+    Title Crawler for buzzorange.com/techorange
+    """
+    from io import BytesIO
+    url = "https://buzzorange.com/techorange/"
+
+    trend_page = requests.get(url).text
+    soup = bs(trend_page, 'html.parser')
+    posts = soup.find_all('h4', attrs={'class' : 'entry-title'})
+
+    all_post = list()
+    for post in posts:
+        link = post.a['href']
+        title = post.a.text
+        url = URL(link)
+        if News.objects.filter(short_url=url.short_url, title=title):
+            continue
+
+        news = News(
+                    title=title,
+                    url = url.origin_url,
+                    short_url = url.short_url,
+                    website_icon = "https://buzzorange.com/icon/TO_logo.png"
+                    )
+        buf = BytesIO()
+        url.qr_img.save(buf, format="jpeg")
+        news.qr_img.save(url.file_name, File(buf))
+
