@@ -15,3 +15,14 @@ class News(models.Model):
         verbose_name = '新聞'
         verbose_name_plural = '新聞'
 
+class Weather(models.Model):
+    id = models.AutoField(primary_key=True)
+    created_time = models.DateTimeField(u'建立時間', auto_now_add=True)
+    updated_time = models.DateTimeField(u'更新時間', auto_now=True)
+    image_link = models.CharField(u'圖片連結', max_length=2000)
+    display_time = models.IntegerField(u'播放時間', default=8)
+
+    class Meta:
+        verbose_name = '天氣資訊'
+        verbose_name_plural = '天氣資訊'
+

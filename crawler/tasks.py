@@ -6,7 +6,10 @@ import qrcode
 from bs4 import BeautifulSoup as bs
 from django.conf import settings
 from django.core.files import File
-from .models import News
+from django.utils import timezone
+from datetime import timedelta
+
+from .models import News, Weather
 
 
 class URL(object):
@@ -86,4 +89,35 @@ def TechOrange_crawler():
         buf = BytesIO()
         url.qr_img.save(buf, format="jpeg")
         news.qr_img.save(url.file_name, File(buf))
+
+def weather_crawler():
+    """
+    Title Crawler for buzzorange.com/techorange
+    """
+    url = "https://www.cwb.gov.tw/Data/radar/"
+    file_temp = "CV1_3600_{}.png"
+
+    timestamp = timezone.localtime()
+    # radar reflect 10 minutes a picture
+    timestamp = timestamp.replace(minute=timestamp.minute // 10 * 10)
+
+    pic_url = url + file_temp.format(timestamp.strftime("%Y%m%d%H%M"))
+
+    while True:
+        ret_code = requests.get(pic_url).status_code
+        if ret_code == 200:
+            if Weather.objects.filter(image_link=pic_url):
+                """Picture is existed"""
+            else:
+                weather = Weather(
+                            website_icon = "https://www.cwb.gov.tw/V8/assets/img/cwb-logoBlue.svg",
+                            image_link = pic_url
+                            )
+                weather.save()
+            return
+        else:
+            """ Can't find the picture """
+            timestamp = timestamp - timedelta(minutes=10)
+            pic_url = url + file_temp.format(timestamp.strftime("%Y%m%d%H%M"))
+
 

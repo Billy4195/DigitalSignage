@@ -44,6 +44,13 @@ body {
 #main-content {
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#main-content img {
+    max-height: 95%;
+    width: auto;
 }
 
 #clock {
