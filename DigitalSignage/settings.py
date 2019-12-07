@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'django_q',
     'image_anncs',
     'signage',
@@ -124,6 +125,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+LOGIN_REDIRECT_URL = 'upload'
+LOGOUT_REDIRECT_URL = 'login'
 
 Q_CLUSTER = {
     'name': 'DjangORM',

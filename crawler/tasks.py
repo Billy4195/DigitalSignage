@@ -110,7 +110,6 @@ def weather_crawler():
                 """Picture is existed"""
             else:
                 weather = Weather(
-                            website_icon = "https://www.cwb.gov.tw/V8/assets/img/cwb-logoBlue.svg",
                             image_link = pic_url
                             )
                 weather.save()

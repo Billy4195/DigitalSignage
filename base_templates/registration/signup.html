@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="text-align: center;">
+    <h1>Sign Up</h1>
+    <form method="post" action="{% url 'signup' %}" style="text-align: center;">
+        {% csrf_token %}
+        <table class="hover" style="margin: 0 auto;">
+            {% for field in form %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                    {{ field.errors }}
+                </tr>
+            {% endfor %}
+        </table>
+        <input class="button" type="submit" value="Sign Up">
+    </form>
+</div>
+{% endblock body %}

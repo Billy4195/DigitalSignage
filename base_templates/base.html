@@ -12,18 +12,18 @@
 
     <div class="top-bar">
         <div class="top-bar-left">
-            <ul class="menu">
-                <li class="menu-text">Marketing Site</li>
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
+            <ul class="menu title-area">
+                <li class="menu-text"><a href="{% url "home" %}" target="_blank">Digital-Signage</a></li>
+                <li><a href="{% url "upload"%}">Upload Image</a></li>
             </ul>
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><a href="#">Three</a></li>
-                <li><a href="#">Four</a></li>
-                <li><a href="#">Five</a></li>
-                <li><a href="#">Six</a></li>
+                {% if user.is_authenticated %}
+                <li class="menu-text"><a href="{% url "logout" %}">Logout</a></li>
+                {% else %}
+                <li class="menu-text"><a href="{% url "login" %}">Log In</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
