@@ -3,6 +3,7 @@ import random
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
+from django.utils import timezone
 from image_anncs.models import Image
 from crawler.models import News, Weather
 
@@ -13,7 +14,8 @@ def index(request):
 
 def get_content(request):
     import json
-    images = Image.objects.order_by("-created_time")[:10]
+    valid_images = Image.objects.filter(start_time__lte=timezone.localtime(), end_time__gt=timezone.localtime())
+    images = valid_images.order_by("-created_time")[:10]
     content = list()
 
     for img in images:
@@ -22,6 +24,7 @@ def get_content(request):
                                                     type="image"))
         content.append(dict(content=html_string,
                             display_time=img.display_time))
+        print(img.image.url)
 
     news = News.objects.order_by("-created_time")[:30]
     sample_size = 15

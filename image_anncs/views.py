@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import ImageForm
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+@login_required
 def upload(request):
     form = ImageForm(request.POST or None, request.FILES or None)
     if request.method == "POST":
@@ -12,3 +14,4 @@ def upload(request):
         else:
             msg_warn = "Upload fail!"
     return render(request, "upload.html", locals())
+
