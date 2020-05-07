@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from datetime import timedelta
+from django.contrib.auth.models import User
 
 def seven_days_after_today():
     return timezone.localtime() + timedelta(days=7)
@@ -15,6 +16,7 @@ class Image(models.Model):
     start_time = models.DateTimeField(u'開始播放時間', blank=True, default=timezone.localtime)
     end_time = models.DateTimeField(u'結束播放時間', blank=True,
             default=seven_days_after_today)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
 
     class Meta:
         verbose_name = '圖片公告'

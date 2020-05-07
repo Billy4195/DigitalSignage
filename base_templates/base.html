@@ -15,10 +15,11 @@
             <ul class="menu title-area">
                 <li class="menu-text"><a href="{% url "home" %}" target="_blank">Digital-Signage</a></li>
                 <li><a href="{% url "upload"%}">Upload Image</a></li>
+                <li><a href="{% url "profile" %}">Profile</a></li>
             </ul>
         </div>
         <div class="top-bar-right">
-            <ul class="menu">
+            <ul class="dropdown menu">
                 {% if user.is_authenticated %}
                 <li class="menu-text"><a href="{% url "logout" %}">Logout</a></li>
                 {% else %}

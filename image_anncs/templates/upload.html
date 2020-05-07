@@ -9,7 +9,7 @@
         {% if field.label == "Image" %}
             <label for="imageUpload" class="button">Upload File</label>
             {{ field }}
-        {% else %}
+        {% elif field.label !=  "User" %}
             {{ field.label_tag }}
             {{ field }}
         {% endif %}

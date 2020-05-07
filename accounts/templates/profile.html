@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="text-align: center;">
+    <h2> Uploaded Images</h2>
+    <table class="hover" style="text-align: center; width: 100%;">
+        <thead>
+            <tr>
+                <td style="text-align: center;">User</td>
+                <td style="text-align: center;">Image</td>
+                <td style="text-align: center;">Link</td>
+            </tr>
+        </thead>
+    {% for img in images %}
+        <tr>
+            <td>
+                {{ img.user.username }}
+            </td>
+            <td>
+                <a href="/{{ img.image.url }}" target="_blank"><img src="/{{ img.image.url }}" style="height: 250px;"></a>
+            </td>
+            <td>
+                <a href="{% url 'img_delete' img.id %}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock body %}
