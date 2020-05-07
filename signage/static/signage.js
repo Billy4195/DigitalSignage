@@ -29,7 +29,7 @@ function Display(context) {
 
 function getContent() {
     $.ajax({
-        url: "/get_content",
+        url: "/get_content/display",
         success: function(obj) {
             obj = JSON.parse(obj);
             total_delay = 0;
